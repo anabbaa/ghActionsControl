@@ -10,6 +10,9 @@ jobs:
         include:
           - node-verion: 18
             operating-system: ubuntu-latest
+        exclude:
+          - node-verion: 18
+            operating-system: ubuntu-latest
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: get code
