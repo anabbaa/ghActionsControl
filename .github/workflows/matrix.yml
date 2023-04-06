@@ -1,0 +1,27 @@
+name: matrix
+on: push
+jobs:
+  build:
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-verion: [12, 13, 14]
+        operating-system: [latest-ubuntu, latest-windows]
+        include:
+          - node-version: 18
+            operating-system: ubuntu-latest
+        exclude:
+          - node-version: 12
+            operating-system: windows-latest
+    runs-on: ${{ matrix.operating-system }}
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install NODeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install dependiencies
+        run: npm ci
+      - name: build project
+        run: npm run build
