@@ -1,8 +1,18 @@
 name: reusable demo
-on: workflow_call
+on:
+  workflows-call:
+    inputs:
+      artifact-name:
+        description: The name of thedeployabke artifact files
+        required: false
+        default: dist
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: get code
+        uses: actions/download-artifact@v3
+        with:
+          mame: ${{ inputs.artifact-name }}
       - name: output information
         run: echo "Deploying & uploading..."
