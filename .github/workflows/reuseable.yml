@@ -1,6 +1,6 @@
 name: reusable demo
 on:
-  workflows-call:
+  workflow-call:
     inputs:
       artifact-name:
         description: The name of thedeployabke artifact files
