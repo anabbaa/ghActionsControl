@@ -13,6 +13,6 @@ jobs:
       - name: get code
         uses: actions/download-artifact@v3
         with:
-          mame: ${{ inputs.artifact-name }}
+          name: ${{ inputs.artifact-name }}
       - name: output information
         run: echo "Deploying & uploading..."
